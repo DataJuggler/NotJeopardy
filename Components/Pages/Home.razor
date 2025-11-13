@@ -1,0 +1,25 @@
+﻿@page "/"
+@using DataJuggler.Blazor.Components
+@using System.Drawing;
+
+
+<div class="dislayinline">
+    <TextBoxComponent Name="PromptTextBox" Unit="px" HeightUnit="px" Parent="this"
+        Caption="Text:" Width="480" Multiline="true" Height="128" TextBoxClassName="height116"
+        Column1Width="80" LabelWidth="64" LabelLeft="32" LabelTextAlign="right" 
+        LabelFontSize="16" LabelFontName="Calibri" LabelClassName="right20 up108">
+    </TextBoxComponent>
+    <ImageButton Name="CreateImageButton" Parent="this" ButtonNumber="1"
+        ClickHandler=@ButtonClicked Height="60" Width="120" 
+        ImageUrl="../Images/BlackButton.jpg" TextColor=@Color.White
+        Left="96" Top="0" Text="Create" FontName="Calibri" FontSize="20">
+    </ImageButton>
+</div>
+<ImageComponent Name="BlueImage" Parent="this" TextAlign="Center"
+    Height="270" Width="480" ImageUrl="../Images/Blue.png"
+    Left="0" Top="0" Visible="false">
+</ImageComponent>
+<LinkButton Name="DownloadButton" Parent="this" TextColor="@Color.MediumBlue" 
+    HideOnDownload="true" Text="Download" Left="-16" FontSize=18 
+    Top="-8" Visible="false" ButtonNumber="2">
+</LinkButton>
