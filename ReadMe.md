@@ -9,7 +9,7 @@ like you see below (if viewing on GitHub)
 
 This project creates images like the blue questions on Jeopardy. The main purpose is to show how
 easy setting up DataJuggler.Blazor.Components is, and writing text to images using 
-NuGet package DataJuggler.PixelDatabase.net.
+NuGet package DataJuggler.PixelDatabase.
 
 # Cloning And Running This Project
 
