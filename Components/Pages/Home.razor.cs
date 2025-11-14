@@ -81,7 +81,7 @@ namespace NotJeopardy.Components.Pages
                             // Get the text
                             string text = PromptTextBox.Text;
 
-                            // Convert the words into lines
+                            // Convert the text into lines
                             List<TextLine> lines = TextHelper.SplitTextIntoLines(text, 1080, 24, 128);
 
                             // if there are one or more lines
