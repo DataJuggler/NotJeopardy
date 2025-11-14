@@ -13,15 +13,15 @@ NuGet package DataJuggler.PixelDatabase.
 
 # Cloning And Running This Project
 
-There are two branches to this project, Main and Tutorial. If you just want to run the project and do a code review
-clone the Main branch and run it. Type in some text and click Create and it will create the image. After the image
-is create, you can Download the image with an example of the LinkButton. 
+There are two branches to this project, Main and Tutorial. If you just want to run the project, clone the 
+Main branch and start debugging or F5 to run it. Type in some text and click Create and it will create the image. 
+After the image is created, you can download the image with an example of the LinkButton will become visible.
 
 What you will need: 
 
 # Visual Studio 2022 if you want to run or follow the tutorial
 
-It should run on VS 2026 I just haven't tested it yet
+It should run on VS 2026 I just haven't tested it yet. 
 
 # Regionizer 2022 Only If You Want To Walk Throught The Tutorial
 https://github.com/DataJuggler/Regionizer2022
@@ -45,7 +45,42 @@ If you want to use another font see the Customizations section later in this doc
 
 # Cloning Main Brach
 
+# ✅ Option 1 — Clone Through Visual Studio
 
+Open Visual Studio 2022 (or VS 2026 should work)
+
+Click Clone a repository
+
+Enter this URL:
+https://github.com/DataJuggler/NotJeopardy.git
+
+Choose your local folder
+
+Click Clone
+
+# 💻 Option 2 — Clone Using the Command Line
+
+Open a command window
+
+Press Win + R, type cmd, and press Enter
+
+Navigate to the folder where you want the project
+Example:
+cd "C:\Projects"
+or
+cd "C:\Projects\GitHub"
+
+Clone the Main branch
+
+    git clone --branch main https://github.com/DataJuggler/NotJeopardy.git
+
+Full example (if you have these folders)
+
+cd "C:\Projects\GitHub"
+
+    git clone --branch main https://github.com/DataJuggler/NotJeopardy.git"
+
+After cloning, open NotJeopardy.sln in Visual Studio.
 
 # Customizations
 
