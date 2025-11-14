@@ -82,6 +82,12 @@ cd "C:\Projects\GitHub"
 
 After cloning, open NotJeopardy.sln in Visual Studio.
 
+Press F5 to Start Debugging
+
+# Tutorial
+
+
+
 # Customizations
 
 This was just a short demo. If you wanted to use this for other images, the section below describes
