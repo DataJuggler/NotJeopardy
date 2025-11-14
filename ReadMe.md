@@ -2,7 +2,7 @@
 
 This project is a demo of four opensource projects that will demonstrate how easy it is to build
 Blazor projecs with DataJuggler.Blazor.Components. The output of this project is an image 
-like you see below (if viewing on GitHub for this project)
+like you see below (if viewing on GitHub)
 
 <img src="https://raw.githubusercontent.com/DataJuggler/SharedRepo/master/Shared/Images/BlazorJeopardy.png"
      width="455" height="270" alt="Blazor Jeopardy" />
