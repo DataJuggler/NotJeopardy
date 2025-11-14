@@ -18,9 +18,4 @@
     <Content Remove="C:\Users\Corby\.nuget\packages\datajuggler.blazor.components\9.19.20\contentFiles\any\net9.0\SaveCancelComponent.razor.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DataJuggler.Blazor.Components" Version="9.19.20" />
-    <PackageReference Include="DataJuggler.PixelDatabase" Version="9.0.4" />
-  </ItemGroup>
-
 </Project>
