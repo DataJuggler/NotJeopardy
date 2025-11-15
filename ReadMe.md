@@ -44,7 +44,7 @@ and double click the font ITC Korinna Bold.otf, or you can use any font you want
 
 If you want to use another font see the Customizations section later in this document
 
-# Cloning Main Brach
+# Cloning
 
 # ✅ Option 1 — Clone Through Visual Studio
 
