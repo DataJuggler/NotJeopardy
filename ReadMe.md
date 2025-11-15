@@ -90,6 +90,7 @@ Press F5 to Start Debugging
 # Step 1: Add two NuGet packages
  
 DataJuggler.Blazor.Components
+
 DataJuggler.PixelDatabase
 
 # Step 2: Setup Program.cs
@@ -109,12 +110,13 @@ Around line 16, add this line to register BlazorStyled
 
 Add the following links to App.razor to link to the CSS class in DataJuggler.Blazor.Components
 
-Directly above <ImportMap /> add
+On line 10 directly above ImportMap add
 
     <link href="/_content/DataJuggler.Blazor.Components/css/DataJuggler.Blazor.Components.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-Directly above </body> add this link to the JavaScript file. This makes the LinkButton able to download the images
+On line 17 directly above the closing body tag add this link to the JavaScript file. 
+This makes the LinkButton able to download the images
 
      <script src="_content/DataJuggler.Blazor.Components/_content/Blazor.JavaScriptInterop/BlazorJSInterop.js"></script>
 
@@ -125,7 +127,7 @@ Home.razor and Home.razor.cs
 
 Erase everything in Home.razor except for the top page directive. Home.razor is located in Components\Pages\
 
-Add the following two lines directly below @page "/"
+On line 2 add the following two lines directly below @page "/"
 
     @using DataJuggler.Blazor.Components
     @using System.Drawing;
@@ -145,6 +147,13 @@ Add the following markup. This will add a TextBoxComponent and an ImageButton.
         </ImageButton>
     </div>
 
+Note you will see Visual Studio complain about two errors:
+
+1. Parent="this" because we haven't implemented IBlazorComponentParent
+2. ClickHandler does not exist
+
+We will add both of those in the next step when we create Home.razor.cs
+
 Directly below the div, add this markup. This will add the ImageComponent and a LinkButton
 
     <ImageComponent Name="BlueImage" Parent="this" TextAlign="Center"
@@ -163,7 +172,254 @@ Save Home.razor
 Select the Pages folder under components, right click -> Select Add Class -> 
 Name the class Home.razor.cs
 
-A new class will be created. You will see a squiggly line under 
+A new class will be created. You will see a squiggly line under the word Home. This is because
+the razor component has the same name. Add the word partical before class like this
+
+    public partial class Home
+    {
+    }
+
+Now we are going to use Regionizer 2022 to format this class
+
+With Home.razor.cs as the Active Document like shown in this image, click the Format Document Button
+
+<img src="https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/RegionizerNotJeopardy.png"
+    Height="420" Width="490">
+
+This will format the C# document into Regions.
+
+Add this text for the class Summary
+
+    This class is the main page for this app
+
+And add this tag directly above the class name to make the app set to run only on Windows
+
+    [SupportedOSPlatform("windows")]
+
+In Regionizer 2022 click the IBlazorComponentParent button. This will implicate the
+IBlazorComponentParent interface and solved the parent="this" issue.
+
+Next we need to add some using statements, replace the using statements with these
+
+    using DataJuggler.Blazor.Components;
+    using DataJuggler.Blazor.Components.Interfaces;
+    using DataJuggler.PixelDatabase;
+    using DataJuggler.UltimateHelper;
+    using DataJuggler.UltimateHelper.Objects;
+    using System.Drawing;
+    using System.Runtime.Versioning;
+
+You can delete the Events region as it will not be used
+
+# ✨ Wire Up Components — It's Magic!
+
+Switch back to Home.razor as the Active Document in Visual Studio, and
+in Regionizer 2022 click the Wire Up Components button. 
+
+To me this is a really cool feature. What this does is it reads all the components on the Active Document.
+
+Regionizer 2022 will parse these components and switch to Home.razor.cs and add the follow code (in this example)
+
+Private Variables
+
+    private ImageComponent blueImage;
+    private ImageButton createImageButton;
+    private TextBoxComponent promptTextBox;
+    private LinkButton downloadButton;
+
+Properties
+
+    public ImageComponent BlueImage
+    public ImageButton CreateImageButton
+    public TextBoxComponent PromptTextBox
+    public LinkButton DownloadButton
+
+Has Properties (An Easy Way To Test For Null)
+
+    public bool HasBlueImage
+    public bool HasCreateImageButton
+    public bool HasPromptTextBox
+    public bool HasDownloadButton
+
+And the best part, this will write the Register method code for you.
+
+    public void Register(IBlazorComponent component)
+    {
+        if (component is ImageButton tempImageButton)
+        {
+            // store the ImageButton component
+            if (component.Name == "CreateImageButton")
+            {
+                CreateImageButton = tempImageButton;
+            }
+        }
+        else if (component is ImageComponent tempImageComponent)
+        {
+            // store the ImageComponent component
+            if (component.Name == "BlueImage")
+            {
+                BlueImage = tempImageComponent;
+            }
+        }
+        else if (component is LinkButton tempLinkButton)
+        {
+            // store the LinkButton component
+            if (component.Name == "DownloadButton")
+            {
+                DownloadButton = tempLinkButton;
+            }
+        }
+        else if (component is TextBoxComponent tempTextBoxComponent)
+        {
+            // store the TextBoxComponent component
+            if (component.Name == "PromptTextBox")
+            {
+                PromptTextBox = tempTextBoxComponent;
+            }
+        }
+    }
+
+All of the components on Home.razor have a property 
+
+    parent="this"
+
+When a component sets the Parent property, the components then calls the parent's register 
+method. The parent can be any object that implements IBlazorComponentParent.
+
+A note about Wire Up Components. If you click this button again, it will erase any code you have
+in the Resister method and rewrite it. It will back up the file to (filename).backup and be in your folder
+if you ever need to recover.
+
+# Create the ButtonClicked method as the ClickHandler
+
+The ImageButton and the LinkButton both have a ClickHandler property.
+The ClickHandler is a delegate to a method like
+
+    public void ButtonClicked(int buttonNumber, string buttonText)
+
+In Regionizer 2022 select Method under the Add drop down at the top
+
+Give the method a name ButtonClicked
+
+You can either type the return type as void or temporarily change the type 
+in the dropdown to Event and switch it back to Method. This will switch the
+return type to void. 
+
+Click the plus sign button to add the ButtonClicked method
+
+Add these two parameters to the method
+
+    int buttonNumber, string buttonText
+
+Now paste in this code to the method
+
+    // if this is the first button (Create Image)
+    if (buttonNumber == 1)
+    {
+        // Create the text and image
+        CreateJeopardyText();
+    }
+
+So the full method looks like this (I know I could have shown this at first, it's a tutorial)
+
+    #region ButtonClicked(int buttonNumber, string buttonText)
+    /// <summary>
+    /// method handles a button click
+    /// </summary>
+    public void ButtonClicked(int buttonNumber, string buttonText)
+    {
+        // if this is the first button (Create Image)
+        if (buttonNumber == 1)
+        {
+            // Create the text and image
+            CreateJeopardyText();
+        }
+    }
+    #endregion
+
+# Final Step - create the CreateJeopardyText method
+
+Still in Regionizer 2022 - change the Name to CreateJeopardyText
+
+Click the Add button again.
+
+This will create the method. (Optional) paste or type in method summary like shown below
+
+    #region CreateJeopardyText()
+    /// <summary>
+    /// Create an image with the Jeopardy Text
+    /// </summary>
+    public void CreateJeopardyText()
+    {
+    }
+
+Now paste in the code for this method
+
+    // get the fullPath of the image
+    string path = Path.Combine(Environment.CurrentDirectory, @"wwwroot\Images\Blue.png");
+    
+    // If the path Exists On Disk and the PromptTextBox and BlueImage properties both exist
+    if ((FileHelper.Exists(path)) && (HasPromptTextBox) && (HasBlueImage))
+    {
+        // Load the PixelDatabase
+        PixelDatabase pixelDatabase = PixelDatabaseLoader.LoadPixelDatabase(path, null);
+        
+        // If the pixelDatabase object exists
+        if (NullHelper.Exists(pixelDatabase))
+        {
+            // Create a font
+            Font font = FontHelper.SearchForFont("ITC", 80);
+            
+            // If the font object exists
+            if (font != null)
+            {
+                // Get the text
+                string text = PromptTextBox.Text;
+                
+                // Convert the text into lines
+                List<TextLine> lines = TextHelper.SplitTextIntoLines(text, 1080, 24, 128);
+                
+                // if there are one or more lines
+                if (ListHelper.HasOneOrMoreItems(lines))
+                {
+                    // iterate the lines
+                    foreach(TextLine line in lines)
+                    {
+                        // Draw the text
+                        pixelDatabase.DrawText(line.Text, font, new Point(960, line.Top), StringAlignment.Center, StringAlignment.Center, Brushes.White);
+                    }
+                }
+                
+                // Create file name with a partial guid for uniqueness
+                string savedFilename = FileHelper.CreateFileNameWithPartialGuid(path, 12);
+                
+                // Save the file
+                pixelDatabase.SaveAs(savedFilename);
+                
+                // Get the name of the file
+                FileInfo fileInfo = new FileInfo(savedFilename);
+                
+                // set the imageUrl
+                string imageUrl = "../Images/" + fileInfo.Name;
+                
+                // Set the BlueImage
+                BlueImage.SetImageUrl(imageUrl);
+                
+                // Show the component
+                BlueImage.SetVisible(true);
+                
+                // if the value for HasDownloadButton is true
+                if (HasDownloadButton)
+                {
+                    // Set the DownloadPath
+                    DownloadButton.SetDownloadPath("Images/" + fileInfo.Name);
+                    
+                    // Show the Download button
+                    DownloadButton.SetVisible(true);
+                }
+            }
+        }
+    }
 
 # Customizations
 
