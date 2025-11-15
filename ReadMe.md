@@ -197,8 +197,8 @@ And add this tag directly above the class name to make the app set to run only o
 
     [SupportedOSPlatform("windows")]
 
-In Regionizer 2022 click the IBlazorComponentParent button. This will implicate the
-IBlazorComponentParent interface and solved the parent="this" issue.
+In Regionizer 2022 click the IBlazorComponentParent button. This will implement the
+IBlazorComponentParent interface and solve the parent="this" issue.
 
 Next we need to add some using statements, replace the using statements with these
 
