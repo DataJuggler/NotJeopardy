@@ -21,9 +21,9 @@ What you will need:
 
 # Visual Studio 2022 if you want to run or follow the tutorial
 
-It should run on VS 2026 I just haven't tested it yet. 
+This project should run on VS 2026 I just haven't tested it yet. 
 
-# Regionizer 2022 Only If You Want To Walk Throught The Tutorial
+# Regionizer 2022 If You Want To Walk Throught The Tutorial
 https://github.com/DataJuggler/Regionizer2022
 
 There is a VSIX package located in Regionizer2022\Regionizer\Install\Regionizer2022.vsix
@@ -31,7 +31,7 @@ Double Click On this VSIX to install Regionizer into Visual Studio 2022. To laun
 under the tools menu you will see a menu icon for Regionizer2022. I dock Regioniozer in the same
 panel as Solution Explorer, Properties, etc. 
 
-Even if you hate regions, you will like the new features to wire up DataJuggler.Blazor.Components.
+Even if you hate regions, you will like the new features to create interfaces and wire up DataJuggler.Blazor.Components.
 
 # ITC Korrina Font
 
@@ -52,7 +52,8 @@ Open Visual Studio 2022 (or VS 2026 should work)
 Click Clone a repository
 
 Enter this URL:
-https://github.com/DataJuggler/NotJeopardy.git
+
+    https://github.com/DataJuggler/NotJeopardy.git
 
 Choose your local folder
 
@@ -70,7 +71,7 @@ cd "C:\Projects"
 or
 cd "C:\Projects\GitHub"
 
-Clone the Main branch
+Clone the repo
 
     git clone --branch main https://github.com/DataJuggler/NotJeopardy.git
 
@@ -86,6 +87,27 @@ Press F5 to Start Debugging
 
 # Tutorial
 
+# Step 1: Add two NuGet packages
+ 
+DataJuggler.Blazor.Components
+DataJuggler.PixelDatabase
+
+# Step 2: Setup Program.cs
+
+Open Program.cs and add the following code
+
+BlazorStyled is used for dynamic CSS styling
+
+    using BlazorStyled;
+
+Around line 16, add this line to register BlazorStyled
+
+    // Required
+    builder.Services.AddBlazorStyled();
+
+# Step 3: Setup App.razor
+
+Add the following links to App.razor to link to the CSS class in DataJuggler.Blazor.Components
 
 
 # Customizations
