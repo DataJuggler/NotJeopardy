@@ -109,6 +109,12 @@ Around line 16, add this line to register BlazorStyled
 
 Add the following links to App.razor to link to the CSS class in DataJuggler.Blazor.Components
 
+Directly above <ImportMap /> add
+
+    <link href="/_content/DataJuggler.Blazor.Components/css/DataJuggler.Blazor.Components.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+
 
 # Customizations
 
