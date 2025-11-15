@@ -21,9 +21,9 @@ What you will need:
 
 # Visual Studio 2022 if you want to run or follow the tutorial
 
-It should run on VS 2026 I just haven't tested it yet. 
+This project should run on VS 2026 I just haven't tested it yet. 
 
-# Regionizer 2022 Only If You Want To Walk Throught The Tutorial
+# Regionizer 2022 If You Want To Walk Throught The Tutorial
 https://github.com/DataJuggler/Regionizer2022
 
 There is a VSIX package located in Regionizer2022\Regionizer\Install\Regionizer2022.vsix
@@ -31,7 +31,7 @@ Double Click On this VSIX to install Regionizer into Visual Studio 2022. To laun
 under the tools menu you will see a menu icon for Regionizer2022. I dock Regioniozer in the same
 panel as Solution Explorer, Properties, etc. 
 
-Even if you hate regions, you will like the new features to wire up DataJuggler.Blazor.Components.
+Even if you hate regions, you will like the new features to create interfaces and wire up DataJuggler.Blazor.Components.
 
 # ITC Korrina Font
 
@@ -52,7 +52,8 @@ Open Visual Studio 2022 (or VS 2026 should work)
 Click Clone a repository
 
 Enter this URL:
-https://github.com/DataJuggler/NotJeopardy.git
+
+    https://github.com/DataJuggler/NotJeopardy.git
 
 Choose your local folder
 
@@ -70,7 +71,7 @@ cd "C:\Projects"
 or
 cd "C:\Projects\GitHub"
 
-Clone the Main branch
+Clone the repo
 
     git clone --branch main https://github.com/DataJuggler/NotJeopardy.git
 
@@ -86,7 +87,83 @@ Press F5 to Start Debugging
 
 # Tutorial
 
+# Step 1: Add two NuGet packages
+ 
+DataJuggler.Blazor.Components
+DataJuggler.PixelDatabase
 
+# Step 2: Setup Program.cs
+
+Open Program.cs and add the following code
+
+BlazorStyled is used for dynamic CSS styling
+
+    using BlazorStyled;
+
+Around line 16, add this line to register BlazorStyled
+
+    // Required
+    builder.Services.AddBlazorStyled();
+
+# Step 3: Setup App.razor
+
+Add the following links to App.razor to link to the CSS class in DataJuggler.Blazor.Components
+
+Directly above <ImportMap /> add
+
+    <link href="/_content/DataJuggler.Blazor.Components/css/DataJuggler.Blazor.Components.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+Directly above </body> add this link to the JavaScript file. This makes the LinkButton able to download the images
+
+     <script src="_content/DataJuggler.Blazor.Components/_content/Blazor.JavaScriptInterop/BlazorJSInterop.js"></script>
+
+After Step 3 you have DataJuggler.Blazor.Components setup for this project. We are now ready to build the 
+Home.razor and Home.razor.cs
+
+# Step 4 Modify Home.razor
+
+Erase everything in Home.razor except for the top page directive. Home.razor is located in Components\Pages\
+
+Add the following two lines directly below @page "/"
+
+    @using DataJuggler.Blazor.Components
+    @using System.Drawing;
+
+Add the following markup. This will add a TextBoxComponent and an ImageButton.
+
+    <div class="dislayinline">
+        <TextBoxComponent Name="PromptTextBox" Unit="px" HeightUnit="px" Parent="this"
+            Caption="Text:" Width="480" Multiline="true" Height="128" TextBoxClassName="height116"
+            Column1Width="80" LabelWidth="64" LabelLeft="32" LabelTextAlign="right"
+            LabelFontSize="16" LabelFontName="Calibri" LabelClassName="right20 up108">
+        </TextBoxComponent>
+        <ImageButton Name="CreateImageButton" Parent="this" ButtonNumber="1"
+            ClickHandler=@ButtonClicked Height="60" Width="120"
+            ImageUrl="../Images/BlackButton.jpg" TextColor=@Color.White
+            Left="96" Top="0" Text="Create" FontName="Calibri" FontSize="20">
+        </ImageButton>
+    </div>
+
+Directly below the div, add this markup. This will add the ImageComponent and a LinkButton
+
+    <ImageComponent Name="BlueImage" Parent="this" TextAlign="Center"
+        Height="270" Width="480" ImageUrl="../Images/Blue.png"
+        Left="0" Top="0" Visible="false">
+    </ImageComponent>
+    <LinkButton Name="DownloadButton" Parent="this" TextColor="@Color.MediumBlue"
+        HideOnDownload="true" Text="Download" Left="-16" FontSize=18
+        Top="-8" Visible="false" ButtonNumber="2">
+    </LinkButton>
+
+Save Home.razor
+
+# Step 6 (Almost Done!) Setup Home.razor.cs
+
+Select the Pages folder under components, right click -> Select Add Class -> 
+Name the class Home.razor.cs
+
+A new class will be created. You will see a squiggly line under 
 
 # Customizations
 
