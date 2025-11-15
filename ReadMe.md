@@ -13,9 +13,10 @@ NuGet package DataJuggler.PixelDatabase.
 
 # Cloning And Running This Project
 
-There are two branches to this project, Main and Tutorial. If you just want to run the project, clone the 
-Main branch and start debugging or F5 to run it. Type in some text and click Create and it will create the image. 
-After the image is created, you can download the image with an example of the LinkButton will become visible.
+There are two branches to this project, Master and Tutorial. If you just want to run the project, clone the 
+repo and start debugging or F5 to run it. Type in some text and click the Create Image button and it will
+create the image. After the image is created, you can download the image with an example of the 
+LinkButton will become visible.
 
 What you will need: 
 
