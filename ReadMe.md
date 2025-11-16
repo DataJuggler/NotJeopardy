@@ -88,10 +88,20 @@ Press F5 to Start Debugging
 
 # Tutorial - Switch To Tutorial Branch
 
-If you want to walk through the tutorial, switch to the Tutorial branch on the Git Changes tab.
+If you want to walk through the tutorial, on the Git menu in Visual Studio select New Branch.
+
+This will popup this window. Switch to the remotes tab and select Tutorial. This will create a local copy of the 
+Tutorial Branch.
+
+<img src=https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/ChangeBranch.png
+    height="239" width="500">
+
+Once you have this local branch, you can switch branches on the Git Changes tab.
 
 <img src=https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/TutorailBranchNotJeopardy.png
     height=360 width=178>
+
+Now that you have the Tutorial branch open you can procede to Step 1.
 
 # Step 1: Add two NuGet packages
 
