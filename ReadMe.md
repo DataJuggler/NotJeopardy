@@ -94,7 +94,11 @@ If you want to walk through the tutorial, switch to the main branch on the Git C
     height=360 width=178>
 
 # Step 1: Add two NuGet packages
+
+Right click the NotJeopardy project in Solution Explorer -> select Manage Nuget Packages
  
+Search for an add the following NuGet packages
+
 DataJuggler.Blazor.Components
 
 DataJuggler.PixelDatabase
