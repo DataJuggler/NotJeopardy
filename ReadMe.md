@@ -86,7 +86,12 @@ After cloning, open NotJeopardy.sln in Visual Studio.
 
 Press F5 to Start Debugging
 
-# Tutorial
+# Tutorial - Switch To Tutorial Branch
+
+If you want to walk through the tutorial, switch to the main branch on the Git Changes tab.
+
+<img src=https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/TutorailBranchNotJeopardy.png
+    height=360 width=178>
 
 # Step 1: Add two NuGet packages
  
