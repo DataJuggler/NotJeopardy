@@ -88,7 +88,7 @@ Press F5 to Start Debugging
 
 # Tutorial - Switch To Tutorial Branch
 
-If you want to walk through the tutorial, switch to the main branch on the Git Changes tab.
+If you want to walk through the tutorial, switch to the Tutorial branch on the Git Changes tab.
 
 <img src=https://github.com/DataJuggler/SharedRepo/blob/master/Shared/Images/TutorailBranchNotJeopardy.png
     height=360 width=178>
