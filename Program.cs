@@ -1,4 +1,5 @@
 using NotJeopardy.Components;
+using BlazorStyled;
 
 namespace NotJeopardy
 {
@@ -12,7 +13,8 @@ namespace NotJeopardy
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
-            
+            // register
+            builder.Services.AddBlazorStyled();
             
 
             var app = builder.Build();
