@@ -11,14 +11,6 @@ This project creates images like the blue questions on Jeopardy. The main purpos
 easy setting up DataJuggler.Blazor.Components is, and writing text to images using 
 NuGet package DataJuggler.PixelDatabase.
 
-# Update 11.18.2025: New Video
-
-### Video Walkthrough
-
-Watch the demo here:
-
-https://youtu.be/P4YvTp9r3Ss
-
 # Cloning And Running This Project
 
 There are two branches to this project, Master and Tutorial. If you just want to run the project, clone the 
