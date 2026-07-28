@@ -67,7 +67,7 @@ namespace NotJeopardy.Components.Pages
                 if ((FileHelper.Exists(path)) && (HasPromptTextBox) && (HasBlueImage))
                 {
                     // Load the PixelDatabase
-                    PixelDatabase pixelDatabase = PixelDatabaseLoader.LoadPixelDatabase(path, null);
+                    PixelDatabase pixelDatabase = PixelDatabaseLoader.LoadPixelDatabase(path);
 
                     // If the pixelDatabase object exists
                     if (NullHelper.Exists(pixelDatabase))

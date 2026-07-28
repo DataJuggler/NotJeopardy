@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -15,12 +15,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Corby\.nuget\packages\datajuggler.blazor.components\10.0.50\contentFiles\any\net10.0\SaveCancelComponent.razor.cs" />
     <Content Remove="C:\Users\Corby\.nuget\packages\datajuggler.blazor.components\9.19.20\contentFiles\any\net9.0\SaveCancelComponent.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DataJuggler.Blazor.Components" Version="9.19.20" />
-    <PackageReference Include="DataJuggler.PixelDatabase" Version="9.0.4" />
+    <PackageReference Include="DataJuggler.Blazor.Components" Version="10.1.9" />
+    <PackageReference Include="DataJuggler.PixelDatabase" Version="10.2.20" />
   </ItemGroup>
 
 </Project>
